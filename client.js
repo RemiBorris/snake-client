@@ -25,5 +25,7 @@ const connect = function() {
   });
   return conn;
 };
-
-module.exports = connect;
+const client = {
+  connect,
+};
+module.exports = client;
