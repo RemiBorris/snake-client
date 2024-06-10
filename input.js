@@ -1,4 +1,5 @@
 let connection;
+const {keyPresses} = require("./constants");
 
 const setupInput = function(conn) {
   const stdin = process.stdin;  // create variable to hold the stdin object so we don't have to type process.stdin multiple times
@@ -14,26 +15,8 @@ const handleUserInput = function(key) {
   if (key === "\u0003") {
     process.exit();
   }
-  if (key === "w") {
-    connection.write("Move: up");
-  }
-  if (key === "a") {
-    connection.write("Move: left");
-  }
-  if (key === "s") {
-    connection.write("Move: down");
-  }
-  if (key === "d") {
-    connection.write("Move: right");
-  }
-  if (key === "l") {
-    connection.write("Say: try harder");
-  }
-  if (key === "o") {
-    connection.write("Say: This ones mine");
-  }
-  if (key === "p") {
-    connection.write("Say: Nice Try!");
+  if (keyPresses[key]) {
+    connection.write(keyPresses[key]);
   }
 };
 
